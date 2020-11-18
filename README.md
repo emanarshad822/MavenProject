@@ -3,7 +3,7 @@
 **Test Description**:
 *The Test includes loading a page and then clicking on the chapter1 link
 After that the test case checks whether the text is present on the page or not
-If not then an exception is thrown. After tha the page navigates back to the Home page*
+If not then an exception is thrown. After that the page navigates back to the Home page*
 
 **Technology Used :** Java, TestNG, Selenium, Maven
 **Framework Used:** Page Object Model
