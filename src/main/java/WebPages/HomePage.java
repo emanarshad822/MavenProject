@@ -6,6 +6,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
+import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
+
 import java.util.concurrent.TimeUnit;
 
 public class HomePage {
@@ -25,8 +31,6 @@ public class HomePage {
     @FindBy(xpath = "//div[contains(text(),'Selenium: Beginners Guide')]")
     private WebElement heading;
 
-
-
     //Constructor
     public HomePage(WebDriver driver){
         this.driver=driver;
@@ -40,11 +44,10 @@ public class HomePage {
     }
 
     public void clickOnLink(){
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       // $(heading).shouldBe(visible);
         Chapter1Link.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
-
 }
 
