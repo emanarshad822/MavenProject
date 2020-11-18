@@ -2,6 +2,10 @@ package Test;
 
 import WebPages.Chapter1Page;
 import WebPages.HomePage;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -14,8 +18,16 @@ public class Test_cases {
 
     WebDriver driver;
 
-    @BeforeMethod
+    ExtentReports extent;
+    ExtentTest logger;
+    ExtentHtmlReporter htmlReporter;
+    String htmlReportPath = ".//Resource//Reports//ExtentReport.html"; //Path for the HTML report to be saved
+
+    @BeforeClass
     public void setup(){
+        htmlReporter = new ExtentHtmlReporter(htmlReportPath);
+        extent = new ExtentReports();
+        extent.attachReporter(htmlReporter);
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ "//drivers//chromedriver.exe");
 
         //use Chrome Driver
@@ -38,7 +50,12 @@ public class Test_cases {
 
     }
 
-    @AfterMethod
+    @AfterTest
+    public void testend() throws Exception {
+        extent.flush();
+    }
+
+    @AfterClass
     public void close(){
         driver.close();
     }

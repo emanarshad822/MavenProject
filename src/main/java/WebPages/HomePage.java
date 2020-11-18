@@ -47,7 +47,6 @@ public class HomePage {
        // $(heading).shouldBe(visible);
         Chapter1Link.click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
     }
 }
 
